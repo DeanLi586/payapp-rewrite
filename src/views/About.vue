@@ -1,5 +1,11 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="about ma-4">
+    <h1>PayApp</h1>
   </div>
 </template>
+
+<script>
+export default {
+  
+}
+</script>
