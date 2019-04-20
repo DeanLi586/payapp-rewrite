@@ -3,9 +3,8 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import About from './views/About.vue'
 
-// Login Views
+// Login View
 import ParentSignIn from './views/login/ParentSignIn'
-import SchoolSignIn from './views/login/SchoolSignIn'
 
 // Sign up views
 import ParentSignUp from './views/register/ParentSignUp'
@@ -14,7 +13,7 @@ import SchoolSignUp from './views/register/SchoolSignUp'
 // Dashboard views
 import Dashboard from '@/components/Dashboard'
 import Child from './views/Child'
-
+import DashboardView from './views/DashboardView'
 
 
 Vue.use(Router)
@@ -34,14 +33,9 @@ export default new Router({
       component: About
     },
     {
-      path: '/sign-in-parent',
-      name: 'Parent Sign In',
+      path: '/login',
+      name: 'Login',
       component: ParentSignIn
-    },
-    {
-      path: '/sign-in-school',
-      name: 'School Sign In',
-      component: SchoolSignIn 
     },
     {
       path: '/sign-up-parent',
@@ -59,10 +53,21 @@ export default new Router({
       component: Dashboard,
       children: [
         {
-          name: 'Child',
+          name: 'dashboard',
+          path:'/dashboard',
+          component: DashboardView
+        },
+        {
+          name: 'child',
           path: '/child',
-          component: Child
-        }
+          component: Child,
+          // redirect: 'view-children'
+        },
+        // {
+        //   name: 'View Children',
+        //   path: '/view-children',
+        //   component: Dashboard
+        // }
       ]
     }
   ]

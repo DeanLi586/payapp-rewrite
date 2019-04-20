@@ -5,16 +5,8 @@
 </template>
 
 <script>
-
 export default {
   name: "App",
-
-  components: {
-    // Navbar,
-    // About,
-    // Home,
-    // Footer
-  },
 
   data() {
     return {};
