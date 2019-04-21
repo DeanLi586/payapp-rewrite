@@ -1,5 +1,4 @@
-const ParentMenuItems = [
-    {
+const ParentMenuItems = [{
         name: 'Home',
         href: '/',
         icon: 'home',
@@ -13,11 +12,9 @@ const ParentMenuItems = [
     },
     {
         name: "Child",
-        href: "/",
         icon: "child_care",
         type: 'group',
-        children: [
-            {
+        children: [{
                 name: 'Add Child',
                 icon: 'add',
                 href: '/add-child'
@@ -29,10 +26,41 @@ const ParentMenuItems = [
             }
         ]
     },
+    {
+        name: "Accounts",
+        icon: 'credit_card',
+        type: 'group',
+        children: [{
+                name: 'Add Account',
+                icon: 'add',
+                href: '/'
+            },
+            {
+                name: 'View Accounts',
+                icon: 'visibility',
+                href: '/'
+            }
+        ]
+    },
+    {
+        name: "Transactions",
+        icon: "payment",
+        type: "group",
+        children: [{
+                name: "Make payment",
+                icon: "add",
+                href: "/"
+            },
+            {
+                name: "View Payments",
+                icon: "visibility",
+                href: "/"
+            }
+        ]
+    }
 ]
 
-const SchoolMenuItems = [
-    {
+const SchoolMenuItems = [{
         name: 'Home',
         href: '/',
         icon: 'home',
@@ -45,26 +73,33 @@ const SchoolMenuItems = [
         type: 'single'
     },
     {
-        name: "Child",
-        href: "/",
-        icon: "child_care",
-        type: 'single'
+        name: "Accounts",
+        icon: 'credit_card',
+        type: 'group',
+        children: [{
+                name: 'Add Account',
+                icon: 'add',
+                href: '/'
+            },
+            {
+                name: 'View Accounts',
+                icon: 'visibility',
+                href: '/'
+            }
+        ]
     },
-    // {
-    //     name: "",
-    //     href: "",
-    //     icon: ""
-    // },
-    // {
-    //     name: "",
-    //     href: "",
-    //     icon: ""
-    // },
-    // {
-    //     name: "",
-    //     href: "",
-    //     icon: ""
-    // },
+    {
+        name: "Transactions",
+        icon: "payment",
+        type: "group",
+        children: [
+            {
+                name: "View Payments",
+                icon: "visibility",
+                href: "/"
+            }
+        ]
+    }
 ]
 
 

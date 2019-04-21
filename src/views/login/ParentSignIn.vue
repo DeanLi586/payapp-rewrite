@@ -84,10 +84,11 @@ export default {
       this.snackbar = true;
 
       axios
-        .post("http://localhost:3000/api/users/login", user)
+        .post("http://localhost:3000/api/login", user)
         .then(res => {
           localStorage.setItem('s.u', JSON.stringify(res.data));
           this.msg = 'Login successful';
+          console.log(res);
           setTimeout(()=> {
             this.snackbar = false;
             this.goToDashboard();

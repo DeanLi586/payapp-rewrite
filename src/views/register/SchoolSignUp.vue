@@ -5,7 +5,7 @@
         <v-card-title class="ma-3">
           <h1
             class="heading text-md-center text-xl-center text-uppercase text-xs-center"
-          >Register as School</h1>
+          >Register as Parent</h1>
         </v-card-title>
         <v-card-text>
           <v-form class="ma-3">
@@ -13,8 +13,8 @@
               type="text"
               :rules="fullnameRules"
               v-model="fullname"
-              prepend-icon="school"
-              label="Institution Name"
+              prepend-icon="person"
+              label="Full name"
               required
             ></v-text-field>
             <v-text-field
@@ -23,6 +23,14 @@
               :rules="emailRules"
               prepend-icon="email"
               label="Email"
+              required
+            ></v-text-field>
+            <v-text-field
+              type="text"
+              v-model="username"
+              :rules="usernameRules"
+              prepend-icon="person"
+              label="Username"
               required
             ></v-text-field>
             <v-text-field
@@ -49,17 +57,10 @@
               label="Confirm Password"
               required
             ></v-text-field>
-            <v-btn block class="success align-center justify-center">Register</v-btn>
+            <v-btn block @click="signUp" :disabled="!isComplete" class="success align-center justify-center">Register</v-btn>
             <v-spacer></v-spacer>
             <p class="body-1 text-md-center">Already have an account?</p>
-            <v-btn
-              block
-              flat
-              outline
-              class="primary justify-center"
-              router
-              :to="`login`"
-            >Sign In</v-btn>
+            <v-btn block flat outline class="primary justify-center" router :to="`login`">Sign In</v-btn>
           </v-form>
         </v-card-text>
       </v-card>
@@ -69,6 +70,7 @@
 
 <script>
 import { validate } from "email-validator";
+import axios from 'axios';
 
 export default {
   data() {
@@ -77,11 +79,16 @@ export default {
       fullname: "",
       password: "",
       phone: "",
+      username: "",
       confirmPassword: "",
-      fullnameRules: [v => !!v || "Institution Name is required"],
+      fullnameRules: [v => !!v || "Full Name is required"],
       emailRules: [
         v => !!v || "Email is required",
         v => validate(v) || "Please enter a valid email"
+      ],
+      usernameRules: [
+        v => !!v || "Username is required",
+        v => v.length < 6 && "Username should not be less than 6 characters"
       ],
       passwordRules: [
         v => !!v || "Password is required",
@@ -108,6 +115,24 @@ export default {
       } else {
         return false;
       }
+    },
+    signUp() {
+      let user = {
+        email: this.email,
+        fullname: this.fullname,
+        password: this.password,
+        username: this.username,
+        phone: this.phone
+      }
+
+      axios.post('http://localhost:3000/api/users/register-school', user)
+      .then((res) => {
+        this.$router.push({path: '/dashboard'})
+        localStorage.setItem('s.u', res.data);
+        // console.log(res.data);
+      }).catch((err) => {
+        // console.log(err);
+      })
     }
   },
   computed: {

@@ -62,4 +62,11 @@ UserSchema.methods.toAuthJSON = function() {
     };
 };
 
+UserSchema.methods.toJSON = function() {
+    let object = this.toObject();
+    delete object.hash;
+    delete object.salt;
+    return object;
+}
+
 module.exports = mongoose.model('Users', UserSchema);

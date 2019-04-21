@@ -16,7 +16,7 @@ let DB_URL = "";
 
 mongoose.connect(DB_URL, {useNewUrlParser: true, useCreateIndex: true})
 .then(() => {
-    console.log('connected to server');
+    console.log('connected to database');
 }).catch((err) => {
     console.log(`an error occurred: ${err}`);
 });

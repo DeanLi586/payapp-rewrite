@@ -1,6 +1,12 @@
 <template>
   <v-layout fluid fill-height class="layout">
     <v-flex xs12 md6 xl6 class="layout">
+
+      <v-snackbar v-model="snackbar" :timeout="4000" top color="success">
+        <span>{{msg}}</span>
+        <v-btn flat color="white" @click="snackbar = false">Close</v-btn>
+      </v-snackbar>
+
       <v-card align-center class="signup pa-4">
         <v-card-title class="ma-3">
           <h1
@@ -23,6 +29,14 @@
               :rules="emailRules"
               prepend-icon="email"
               label="Email"
+              required
+            ></v-text-field>
+            <v-text-field
+              type="text"
+              v-model="username"
+              :rules="usernameRules"
+              prepend-icon="person"
+              label="Username"
               required
             ></v-text-field>
             <v-text-field
@@ -71,11 +85,18 @@ export default {
       fullname: "",
       password: "",
       phone: "",
+      username: "",
       confirmPassword: "",
+      snackbar: false,
+      msg: '',
       fullnameRules: [v => !!v || "Full Name is required"],
       emailRules: [
         v => !!v || "Email is required",
         v => validate(v) || "Please enter a valid email"
+      ],
+      usernameRules: [
+        v => !!v || "Username is required",
+        v => v.length < 6 && "Username should not be less than 6 characters"
       ],
       passwordRules: [
         v => !!v || "Password is required",
@@ -108,16 +129,23 @@ export default {
         email: this.email,
         fullname: this.fullname,
         password: this.password,
-        username: this.phone
+        username: this.username,
+        phone: this.phone
       }
 
-      axios.post('http://localhost:3000/api/users/register-parent', user)
+      this.msg = 'Signin you up';
+      this.snackbar = true;
+
+      axios.post('http://localhost:3000/api/register-parent', user)
       .then((res) => {
         this.$router.push({path: '/dashboard'})
         localStorage.setItem('s.u', res.data);
+        this.msg = 'Sign up success';
         // console.log(res.data);
       }).catch((err) => {
         // console.log(err);
+        console.log(err);
+        this.msg = err.message;
       })
     }
   },

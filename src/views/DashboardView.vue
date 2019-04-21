@@ -6,9 +6,9 @@
       <v-flex row wrap class="xs-12 md-4">
         <v-card transition="fade-transition" hover class="ma-2 cyan accent-3">
           <v-card-text class="align-center justify-center">
-            <v-icon>shopping_cart</v-icon>
+            <v-icon>child_care</v-icon>
           </v-card-text>
-          <v-card-title class="display-1 justify-center">Products</v-card-title>
+          <v-card-title class="display-1 justify-center">Children</v-card-title>
           <v-card-text class="text-xs-center justify-center">List of Products</v-card-text>
         </v-card>
       </v-flex>
@@ -16,9 +16,9 @@
       <v-flex row wrap class="xs-12 md-4">
         <v-card transition="fade-transition" hover class="ma-2 green accent-3">
           <v-card-text class="align-center justify-center">
-            <v-icon>shopping_cart</v-icon>
+            <v-icon>credit_card</v-icon>
           </v-card-text>
-          <v-card-title class="display-1 justify-center">Products</v-card-title>
+          <v-card-title class="display-1 justify-center">Accounts</v-card-title>
           <v-card-text class="text-xs-center justify-center">List of Products</v-card-text>
         </v-card>
       </v-flex>
@@ -26,9 +26,9 @@
       <v-flex row wrap class="xs-12 md-4">
         <v-card hover transition="fade-transition" class="ma-2 amber accent-3">
           <v-card-text class="align-center justify-center">
-            <v-icon>shopping_cart</v-icon>
+            <v-icon>payment</v-icon>
           </v-card-text>
-          <v-card-title class="display-1 justify-center">Products</v-card-title>
+          <v-card-title class="display-1 justify-center">Transactions</v-card-title>
           <v-card-text class="text-xs-center justify-center">List of Products</v-card-text>
         </v-card>
       </v-flex>
